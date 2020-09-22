@@ -25,6 +25,6 @@ public class CalculadoraTaxaTest {
         List<LocalDate> datas = Arrays.asList(data1, data2, data3);
 
         String nomeHotel = calculadoraTaxa.getMenorTaxa(TipoCliente.REGULAR, datas);
-        assertEquals("Parque das Flores", nomeHotel);
+        assertEquals("Jardim Botânico", nomeHotel);
     }
 }

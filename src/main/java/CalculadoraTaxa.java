@@ -12,15 +12,11 @@ public class CalculadoraTaxa {
 
         Hotel hotelMaisBarato = null;
         double menorValor = 0;
+
         for (Hotel hotel : hoteis) {
             double totalHotel = 0;
             for (LocalDate data : datas) {
-                Optional<Double> result = hotel.getTaxas()
-                        .stream().filter(taxa -> taxa.getTipoCliente() == tipoCliente
-                                && taxa.getTipoDia() == getTipoDiaPorData(data))
-                        .map(Taxa::getValor)
-                        .findFirst();
-                totalHotel += result.orElse((double) 0);
+                totalHotel += getValorDiarioHotel(hotel, data, tipoCliente);
             }
 
             if (totalHotel < menorValor || menorValor == 0) {
@@ -36,8 +32,12 @@ public class CalculadoraTaxa {
         return hotelMaisBarato.getNome();
     }
 
-    TipoDia getTipoDiaPorData(LocalDate data){
-        return data.getDayOfWeek() == DayOfWeek.SATURDAY
-                || data.getDayOfWeek() == DayOfWeek.SUNDAY ? TipoDia.FIM_DE_SEMANA : TipoDia.SEMANA;
+    private Double getValorDiarioHotel(Hotel hotel, LocalDate data, TipoCliente tipoCliente){
+        Optional<Double> result = hotel.getTaxas()
+                .stream().filter(taxa -> taxa.getTipoCliente() == tipoCliente
+                        && taxa.getTipoDia() == TipoDia.getTipoDiaPorData(data))
+                .map(Taxa::getValor)
+                .findFirst();
+        return result.orElse(0.0);
     }
 }
