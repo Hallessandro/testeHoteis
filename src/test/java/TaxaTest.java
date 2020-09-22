@@ -8,7 +8,7 @@ class TaxaTest {
     void validateFieldsTaxa(){
         Taxa taxa = new Taxa(20, TipoCliente.FIDELIDADE, TipoDia.FIM_DE_SEMANA);
         assertAll(
-                () -> assertEquals(20, taxa.getValor(), "Valor não confere"),
+                () -> assertEquals(220, taxa.getValor(), "Valor não confere"),
                 () -> assertEquals(TipoCliente.FIDELIDADE, taxa.getTipoCliente(), "Tipo do Cliente não confere"),
                 () -> assertEquals(TipoDia.FIM_DE_SEMANA, taxa.getTipoDia(), "Tipo do dia não confere")
         );

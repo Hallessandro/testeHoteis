@@ -25,11 +25,25 @@ public class GeradorDataParaTeste {
         List<Taxa> taxas2 = Arrays.asList(taxa5, taxa6, taxa7, taxa8);
         List<Taxa> taxas3 = Arrays.asList(taxa9, taxa10, taxa11, taxa12);
 
-        Hotel hotel1 = new Hotel("Parque das Flores", 3, taxas1);
-        Hotel hotel2 = new Hotel("Jardim Botânico", 4, taxas2);
-        Hotel hotel3 = new Hotel("Mar Atlântico", 5, taxas3);
+        Hotel hotelPqFlores = new Hotel("Parque das Flores", 3, taxas1);
+        Hotel hotelJardimBotanico = new Hotel("Jardim Botânico", 4, taxas2);
+        Hotel hotelMarAtlantico = new Hotel("Mar Atlântico", 5, taxas3);
 
-        hoteis = Arrays.asList(hotel1, hotel2, hotel3);
+        hoteis = Arrays.asList(hotelPqFlores, hotelJardimBotanico, hotelMarAtlantico);
         return hoteis;
+    }
+
+    List<Hotel> getHoteisMesmasTaxas(){
+        Taxa taxa1 = new Taxa(110, TipoCliente.REGULAR, TipoDia.SEMANA);
+        Taxa taxa2 = new Taxa(80, TipoCliente.FIDELIDADE, TipoDia.SEMANA);
+        Taxa taxa3 = new Taxa(90, TipoCliente.REGULAR, TipoDia.FIM_DE_SEMANA);
+        Taxa taxa4 = new Taxa(80, TipoCliente.FIDELIDADE, TipoDia.FIM_DE_SEMANA);
+
+        List<Taxa> taxas1 = Arrays.asList(taxa1, taxa2, taxa3, taxa4);
+
+        Hotel hotelMaiorClassificacao = new Hotel("Hotel Maior Classificacao", 4, taxas1);
+        Hotel hotelMenorClassificacao = new Hotel("Hotel Menor Classificacao", 2, taxas1);
+
+        return Arrays.asList(hotelMaiorClassificacao, hotelMenorClassificacao);
     }
 }

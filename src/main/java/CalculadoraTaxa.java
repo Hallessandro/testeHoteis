@@ -5,11 +5,7 @@ import java.util.Optional;
 
 public class CalculadoraTaxa {
 
-    public String getMenorTaxa(TipoCliente tipoCliente, List<LocalDate> datas) {
-        //Na ausencia de um bd isso apenas gera data para simulação
-        GeradorDataParaTeste geradorDataParaTeste = new GeradorDataParaTeste();
-        List<Hotel> hoteis = geradorDataParaTeste.getHoteisParaTeste();
-
+    public String getMenorTaxa(TipoCliente tipoCliente, List<LocalDate> datas, List<Hotel> hoteis) {
         Hotel hotelMaisBarato = null;
         double menorValor = 0;
 
